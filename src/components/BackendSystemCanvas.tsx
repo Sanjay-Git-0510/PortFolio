@@ -5,8 +5,9 @@ import * as THREE from "three";
 
 type TokenColors = { paper: string; ink: string; vermilion: string; acid: string };
 type Point = [number, number, number];
+type BackendNode = { label: string; detail: string; point: Point; accent?: "vermilion" | "acid" };
 
-const nodePoints: Array<{ label: string; detail: string; point: Point; accent?: "vermilion" | "acid" }> = [
+const nodePoints: [BackendNode, BackendNode, BackendNode, BackendNode, BackendNode, BackendNode] = [
   { label: "Client", detail: "request", point: [-1.8, 2.6, 0] },
   { label: "API edge", detail: "route", point: [1.8, 1.55, 0] },
   { label: "Auth", detail: "JWT", point: [-1.8, 0.5, 0], accent: "vermilion" },
@@ -50,7 +51,16 @@ function Packet({ from, to, color, offset }: { from: Point; to: Point; color: st
 
 function SystemScene({ colors }: { colors: TokenColors }) {
   const group = useRef<THREE.Group>(null);
-  const connectors = useMemo(() => nodePoints.slice(0, -1).map((node, index) => [node.point, nodePoints[index + 1].point] as [Point, Point]), []);
+  const connectors = useMemo(
+    () => [
+      [nodePoints[0].point, nodePoints[1].point],
+      [nodePoints[1].point, nodePoints[2].point],
+      [nodePoints[2].point, nodePoints[3].point],
+      [nodePoints[3].point, nodePoints[4].point],
+      [nodePoints[4].point, nodePoints[5].point],
+    ] as Array<[Point, Point]>,
+    [],
+  );
 
   useEffect(() => {
     const onMove = (event: MouseEvent) => {
