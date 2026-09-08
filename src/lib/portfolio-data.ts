@@ -29,9 +29,8 @@ export const projects = [
     visualSteps: ["User", "JWT + bcrypt", "Server", "Socket.io", "Atlas store"],
   },
 ];
-
 export const skillGroups = {
-  Backend: ["Node.js", "Express.js", "REST APIs", "Middleware", "JWT", "Authentication", "Authorization", "API Design", "Rate Limiting", "Transactions", "Connection Pooling"],
+  Backend: ["Node.js", "Express.js", "REST APIs", "FAST APIs", "Middleware", "JWT", "Authentication", "Authorization", "API Design", "Rate Limiting", "Transactions", "Connection Pooling"],
   Databases: ["PostgreSQL", "MongoDB", "Redis", "SQL", "Caching", "Indexing"],
   Cybersecurity: ["Burp Suite", "Nmap", "Wireshark", "Metasploit", "Kali Linux", "Cryptography", "Network Security"],
   "Core CS": ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Object-Oriented Programming", "Linux"],
