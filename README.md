@@ -1,5 +1,40 @@
 # Sanjay C: Systems Architect
 
+## Deploy with GitHub Actions
+
+This portfolio can be deployed free to GitHub Pages without Railway, Render, or another server platform. GitHub Actions builds the static version and publishes it whenever the `main` branch changes.
+
+### One-time setup
+
+1. Create a GitHub repository. For a normal project repository, any name works, such as `sanjay-portfolio`.
+2. Push this project to the repository's `main` branch.
+3. In GitHub, open **Settings → Pages**.
+4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+5. Open the repository's **Actions** tab and wait for **Deploy portfolio to GitHub Pages** to finish.
+6. Open the URL shown in the completed workflow, usually `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
+
+The workflow automatically uses the correct repository path for project sites. If the repository is named `YOUR-USERNAME.github.io`, it uses the root URL instead.
+
+### Local static build
+
+```bash
+npm ci
+npm run build:pages
+```
+
+The GitHub Pages files are created in `.output/public`.
+
+### Optional Docker build
+
+GitHub Actions is the deployment method above; Docker is only needed when running the portfolio on a server that supports containers.
+
+```bash
+docker build -t sanjay-portfolio .
+docker run --rm -p 3000:3000 sanjay-portfolio
+```
+
+Then open `http://localhost:3000`.
+
 # MASTER PROMPT — PREMIUM HUMAN-DESIGNED 3D FULL-STACK DEVELOPER PORTFOLIO
 
 You are a senior **Product Designer, Creative Director, UX Engineer, 3D Web Designer, Motion Designer, and Full-Stack Engineer**.
