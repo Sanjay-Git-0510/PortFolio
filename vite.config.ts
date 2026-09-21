@@ -20,20 +20,10 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Prerender routes to static HTML when building for static hosting
-    // (GitHub Pages). The Lovable/Cloudflare build keeps normal SSR.
-    ...(isStaticPreset
-      ? {
-          prerender: {
-            enabled: true,
-            crawlLinks: true,
-            autoStaticPathsDiscovery: true,
-            failOnError: true,
-          },
-          ...(basePath
-            ? { router: { basepath: basePath.replace(/\/+$/, "") || "/" } }
-            : {}),
-        }
-      : {}),
+    // Static HTML prerendering for GitHub Pages is done by scripts/prerender.mjs
+    // (run as part of `npm run build:pages`) — the built-in prerenderer does not
+    // work with the nitro static presets (it requests "/" which redirects to the
+    // base path and cannot locate the redirected SSR bundle).
+    ...(basePath ? { router: { basepath: basePath.replace(/\/+$/, "") || "/" } } : {}),
   },
 });
