@@ -1,0 +1,13 @@
+node_modules
+.output
+.dist
+dist
+.git
+.github
+.lovable
+*.log
+.env
+.env.*
+Dockerfile
+.dockerignore
+README.md
