@@ -4,11 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "start": "node .output/server/index.mjs",
+    "start": "npm start",
     "dev": "vite dev",
     "build": "vite build",
-    "build:node": "NITRO_PRESET=node-server vite build",
-    "build:pages": "NITRO_PRESET=github-pages vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -76,7 +74,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@lovable.dev/vite-tanstack-config": "2.23.1",
+    "@lovable.dev/vite-tanstack-config": "^2.15.0",
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
